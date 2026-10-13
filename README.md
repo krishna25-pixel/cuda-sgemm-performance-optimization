@@ -59,17 +59,10 @@ The optimized Tile64 timings across independent runs were 0.8843, 0.8717, and 0.
 
 **N=2048 stress test:** 7.9087 ms / 2172.3 GFLOPS for Tile64/Reg4 versus 38.3686 ms for naive; cuBLAS 4.0180 ms in that particular run.
 
-## Limitations and next experiments
 
-- Kernel time may be influenced by GPU clocks, concurrent jobs, caching and GPU allocation, particularly in shared cloud notebooks.
-- A fully independent high-precision CPU-reference check and input-pattern stress suite would further strengthen numerical validation.
-- Exact clock-state control and detailed Nsight Compute counters may be unavailable on Kaggle.
-- Future optimizations: sweep tile/block sizes and register usage; investigate compute vs memory limitations; compare additional matrix sizes and repeated full-run timings under controlled GPU load.
 
-## Interview topics
 
-Be ready to explain coalesced accesses, shared memory, register reuse, output tiles, synchronization, numerical tolerance, CUDA-event timing, arithmetic intensity, cuBLAS variance and why a naive kernel can outperform tiled variants at small N.
 
-## Results provenance
+## Results 
 
 The `results/` directory contains CSVs/logs supplied from Kaggle execution. The source and notebooks are preserved; no synthetic benchmark timings are substituted for GPU measurements.
