@@ -1,0 +1,30 @@
+GPU: Tesla T4, compute capability 7.5, SMs 40
+
+N=127 | cuBLAS (pedantic FP32 math): 0.00799 ms
+ naive        PASS median 0.00864 ms     474.3 GFLOPS  0.92x cuBLAS | abs 1.6689e-06 rel 1.2517e-06
+ tile32_reg2  PASS median 0.01285 ms     318.9 GFLOPS  0.62x cuBLAS | abs 1.6689e-06 rel 1.2517e-06
+ tile64_reg4  PASS median 0.01589 ms     257.7 GFLOPS  0.50x cuBLAS | abs 1.6689e-06 rel 1.2517e-06
+
+N=256 | cuBLAS (pedantic FP32 math): 0.01982 ms
+ naive        PASS median 0.06018 ms     557.5 GFLOPS  0.33x cuBLAS | abs 3.3379e-06 rel 2.0266e-06
+ tile32_reg2  PASS median 0.03092 ms    1085.0 GFLOPS  0.64x cuBLAS | abs 3.3379e-06 rel 2.0266e-06
+ tile64_reg4  PASS median 0.02832 ms    1185.0 GFLOPS  0.70x cuBLAS | abs 3.3379e-06 rel 2.0266e-06
+
+N=512 | cuBLAS (pedantic FP32 math): 0.05042 ms
+ naive        PASS median 0.43528 ms     616.7 GFLOPS  0.12x cuBLAS | abs 0 rel 0
+ tile32_reg2  PASS median 0.17501 ms    1533.8 GFLOPS  0.29x cuBLAS | abs 0 rel 0
+ tile64_reg4  PASS median 0.11871 ms    2261.2 GFLOPS  0.42x cuBLAS | abs 0 rel 0
+
+N=1024 | cuBLAS (pedantic FP32 math): 0.33937 ms
+ naive        PASS median 4.17321 ms     514.6 GFLOPS  0.08x cuBLAS | abs 2.0027e-05 rel 7.7693e-06
+ tile32_reg2  PASS median 1.48365 ms    1447.4 GFLOPS  0.23x cuBLAS | abs 2.0027e-05 rel 7.7693e-06
+ tile64_reg4  PASS median 0.87170 ms    2463.6 GFLOPS  0.39x cuBLAS | abs 2.0027e-05 rel 7.7693e-06
+
+TWO-STAGE REDUCTION: timings include both stages; transfers excluded
+ N=1048576 shared   PASS median 0.03147 ms relerr 5e-08
+ N=1048576 shuffle  PASS median 0.01869 ms relerr 5e-08
+ N=4194304 shared   PASS median 0.09714 ms relerr 9.58e-09
+ N=4194304 shuffle  PASS median 0.06521 ms relerr 9.58e-09
+
+ALL CORRECTNESS CHECKS: PASS
+

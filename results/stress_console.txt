@@ -1,0 +1,35 @@
+GPU: Tesla T4, compute capability 7.5, SMs 40
+
+N=127 | cuBLAS (pedantic FP32 math): 0.01163 ms
+ naive        PASS median 0.01515 ms     270.4 GFLOPS  0.77x cuBLAS | abs 1.9073e-06 rel 1.0524e-06
+ tile32_reg2  PASS median 0.02251 ms     182.0 GFLOPS  0.52x cuBLAS | abs 1.9073e-06 rel 1.0524e-06
+ tile64_reg4  PASS median 0.02807 ms     146.0 GFLOPS  0.41x cuBLAS | abs 1.9073e-06 rel 1.0524e-06
+
+N=256 | cuBLAS (pedantic FP32 math): 0.03420 ms
+ naive        PASS median 0.10486 ms     320.0 GFLOPS  0.33x cuBLAS | abs 3.8147e-06 rel 2.6822e-06
+ tile32_reg2  PASS median 0.05386 ms     623.0 GFLOPS  0.63x cuBLAS | abs 3.8147e-06 rel 2.6822e-06
+ tile64_reg4  PASS median 0.04953 ms     677.5 GFLOPS  0.69x cuBLAS | abs 3.8147e-06 rel 2.6822e-06
+
+N=512 | cuBLAS (pedantic FP32 math): 0.08744 ms
+ naive        PASS median 0.76174 ms     352.4 GFLOPS  0.11x cuBLAS | abs 0 rel 0
+ tile32_reg2  PASS median 0.29508 ms     909.7 GFLOPS  0.30x cuBLAS | abs 0 rel 0
+ tile64_reg4  PASS median 0.19518 ms    1375.3 GFLOPS  0.45x cuBLAS | abs 0 rel 0
+
+N=1024 | cuBLAS (pedantic FP32 math): 0.37187 ms
+ naive        PASS median 4.22318 ms     508.5 GFLOPS  0.09x cuBLAS | abs 2.0027e-05 rel 8.2254e-06
+ tile32_reg2  PASS median 1.47332 ms    1457.6 GFLOPS  0.25x cuBLAS | abs 2.0027e-05 rel 8.2254e-06
+ tile64_reg4  PASS median 0.88497 ms    2426.6 GFLOPS  0.42x cuBLAS | abs 2.0027e-05 rel 8.2254e-06
+
+N=2048 | cuBLAS (pedantic FP32 math): 4.01797 ms
+ naive        PASS median 38.36856 ms     447.8 GFLOPS  0.10x cuBLAS | abs 3.7193e-05 rel 1.5795e-05
+ tile32_reg2  PASS median 13.78120 ms    1246.6 GFLOPS  0.29x cuBLAS | abs 3.7193e-05 rel 1.5795e-05
+ tile64_reg4  PASS median 7.90870 ms    2172.3 GFLOPS  0.51x cuBLAS | abs 3.7193e-05 rel 1.5795e-05
+
+TWO-STAGE REDUCTION: timings include both stages; transfers excluded
+ N=1048576 shared   PASS median 0.03346 ms relerr 5e-08
+ N=1048576 shuffle  PASS median 0.01986 ms relerr 5e-08
+ N=4194304 shared   PASS median 0.09863 ms relerr 9.58e-09
+ N=4194304 shuffle  PASS median 0.06537 ms relerr 9.58e-09
+
+ALL CORRECTNESS CHECKS: PASS
+
